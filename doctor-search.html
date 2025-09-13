@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Həkim Axtarışı - Smart Clinic</title>
+    <link rel="stylesheet" href="doctor-search.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <span>Smart Clinic</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Ana Səhifə</a>
+                <a href="doctor-search.html" class="nav-link active">Həkim Axtarışı</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            </nav>
+            <div class="header-actions">
+                <button class="btn-outline">Giriş</button>
+                <button class="btn-primary">Qeydiyyat</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Hero Section -->
+    <section class="search-hero">
+        <div class="container">
+            <h1>Həkim Axtarışı</h1>
+            <p>İxtisaslı həkimlərimiz arasından sizə uyğun olanı tapın</p>
+            <div class="main-search">
+                <div class="search-input-group">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="mainSearch" placeholder="Həkim adı, ixtisas və ya xəstəlik axtarın...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                        Axtarış
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-layout">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar">
+                    <div class="filters-header">
+                        <h3>Filterlər</h3>
+                        <button class="clear-filters">
+                            <i class="fas fa-times"></i>
+                            Təmizlə
+                        </button>
+                    </div>
+
+                    <!-- Specialty Filter -->
+                    <div class="filter-group">
+                        <h4>İxtisas</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" value="kardioloq">
+                                <span class="checkmark"></span>
+                                Kardioloq
+                                <span class="count">(12)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="nevroloq">
+                                <span class="checkmark"></span>
+                                Nevroloq
+                                <span class="count">(8)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="dermatoloq">
+                                <span class="checkmark"></span>
+                                Dermatoloq
+                                <span class="count">(6)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="pediatr">
+                                <span class="checkmark"></span>
+                                Pediatr
+                                <span class="count">(10)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="ortoped">
+                                <span class="checkmark"></span>
+                                Ortoped
+                                <span class="count">(7)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="ginekoloq">
+                                <span class="checkmark"></span>
+                                Ginekoloq
+                                <span class="count">(9)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Location Filter -->
+                    <div class="filter-group">
+                        <h4>Yerləşmə</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" value="baki-merkez">
+                                <span class="checkmark"></span>
+                                Bakı Mərkəz
+                                <span class="count">(25)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="nesimi">
+                                <span class="checkmark"></span>
+                                Nəsimi rayonu
+                                <span class="count">(15)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="yasamal">
+                                <span class="checkmark"></span>
+                                Yasamal rayonu
+                                <span class="count">(12)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="narimanov">
+                                <span class="checkmark"></span>
+                                Nərimanov rayonu
+                                <span class="count">(18)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="sabail">
+                                <span class="checkmark"></span>
+                                Səbail rayonu
+                                <span class="count">(8)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Rating Filter -->
+                    <div class="filter-group">
+                        <h4>Reytinq</h4>
+                        <div class="rating-filter">
+                            <label class="filter-option">
+                                <input type="radio" name="rating" value="5">
+                                <span class="checkmark"></span>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="count">(15)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="rating" value="4">
+                                <span class="checkmark"></span>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                və yuxarı
+                                <span class="count">(32)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="rating" value="3">
+                                <span class="checkmark"></span>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                və yuxarı
+                                <span class="count">(45)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Availability Filter -->
+                    <div class="filter-group">
+                        <h4>Mövcudluq</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" value="today">
+                                <span class="checkmark"></span>
+                                Bu gün
+                                <span class="count">(8)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="tomorrow">
+                                <span class="checkmark"></span>
+                                Sabah
+                                <span class="count">(15)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="this-week">
+                                <span class="checkmark"></span>
+                                Bu həftə
+                                <span class="count">(28)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="next-week">
+                                <span class="checkmark"></span>
+                                Növbəti həftə
+                                <span class="count">(35)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Price Range Filter -->
+                    <div class="filter-group">
+                        <h4>Qiymət Aralığı</h4>
+                        <div class="price-range">
+                            <div class="price-inputs">
+                                <input type="number" id="minPrice" placeholder="Min" min="0">
+                                <span>-</span>
+                                <input type="number" id="maxPrice" placeholder="Max" min="0">
+                                <span>₼</span>
+                            </div>
+                            <div class="price-slider">
+                                <input type="range" id="priceRange" min="0" max="500" value="250">
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Results Section -->
+                <section class="results-section">
+                    <div class="results-header">
+                        <div class="results-info">
+                            <h2>Həkim Axtarış Nəticələri</h2>
+                            <p><span id="resultsCount">52</span> həkim tapıldı</p>
+                        </div>
+                        <div class="sort-options">
+                            <label for="sortBy">Sıralama:</label>
+                            <select id="sortBy">
+                                <option value="relevance">Uyğunluq</option>
+                                <option value="rating">Reytinq</option>
+                                <option value="price-low">Qiymət (Aşağı)</option>
+                                <option value="price-high">Qiymət (Yüksək)</option>
+                                <option value="availability">Mövcudluq</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Doctor Cards Grid -->
+                    <div class="doctors-grid" id="doctorsGrid">
+                        <!-- Doctor Card 1 -->
+                        <div class="doctor-card" data-specialty="kardioloq" data-location="baki-merkez" data-rating="5" data-price="80">
+                            <div class="doctor-image">
+                                <img src="https://via.placeholder.com/120x120/2563eb/ffffff?text=AM" alt="Dr. Ayşə Məmmədova">
+                                <div class="online-status online"></div>
+                            </div>
+                            <div class="doctor-info">
+                                <h3>Dr. Ayşə Məmmədova</h3>
+                                <p class="specialty">Kardioloq</p>
+                                <div class="rating">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="rating-text">5.0 (124 rəy)</span>
+                                </div>
+                                <div class="location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Bakı Mərkəz
+                                </div>
+                                <div class="experience">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    15 il təcrübə
+                                </div>
+                                <div class="price">
+                                    <span class="amount">₼80</span>
+                                    <span class="period">konsultasiya</span>
+                                </div>
+                            </div>
+                            <div class="availability">
+                                <h4>Mövcud vaxtlar</h4>
+                                <div class="time-slots">
+                                    <span class="time-slot available">09:00</span>
+                                    <span class="time-slot available">11:30</span>
+                                    <span class="time-slot available">14:00</span>
+                                    <span class="time-slot unavailable">16:30</span>
+                                </div>
+                                <button class="btn-primary book-appointment">
+                                    <i class="fas fa-calendar-plus"></i>
+                                    Randevu Al
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Doctor Card 2 -->
+                        <div class="doctor-card" data-specialty="nevroloq" data-location="nesimi" data-rating="4" data-price="70">
+                            <div class="doctor-image">
+                                <img src="https://via.placeholder.com/120x120/10b981/ffffff?text=MQ" alt="Dr. Məhəmməd Qasımov">
+                                <div class="online-status offline"></div>
+                            </div>
+                            <div class="doctor-info">
+                                <h3>Dr. Məhəmməd Qasımov</h3>
+                                <p class="specialty">Nevroloq</p>
+                                <div class="rating">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <span class="rating-text">4.8 (89 rəy)</span>
+                                </div>
+                                <div class="location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Nəsimi rayonu
+                                </div>
+                                <div class="experience">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    12 il təcrübə
+                                </div>
+                                <div class="price">
+                                    <span class="amount">₼70</span>
+                                    <span class="period">konsultasiya</span>
+                                </div>
+                            </div>
+                            <div class="availability">
+                                <h4>Mövcud vaxtlar</h4>
+                                <div class="time-slots">
+                                    <span class="time-slot unavailable">10:00</span>
+                                    <span class="time-slot available">13:00</span>
+                                    <span class="time-slot available">15:30</span>
+                                    <span class="time-slot unavailable">17:00</span>
+                                </div>
+                                <button class="btn-primary book-appointment">
+                                    <i class="fas fa-calendar-plus"></i>
+                                    Randevu Al
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Doctor Card 3 -->
+                        <div class="doctor-card" data-specialty="dermatoloq" data-location="yasamal" data-rating="4" data-price="60">
+                            <div class="doctor-image">
+                                <img src="https://via.placeholder.com/120x120/f59e0b/ffffff?text=SE" alt="Dr. Səbinə Əliyeva">
+                                <div class="online-status online"></div>
+                            </div>
+                            <div class="doctor-info">
+                                <h3>Dr. Səbinə Əliyeva</h3>
+                                <p class="specialty">Dermatoloq</p>
+                                <div class="rating">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <span class="rating-text">4.6 (67 rəy)</span>
+                                </div>
+                                <div class="location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Yasamal rayonu
+                                </div>
+                                <div class="experience">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    8 il təcrübə
+                                </div>
+                                <div class="price">
+                                    <span class="amount">₼60</span>
+                                    <span class="period">konsultasiya</span>
+                                </div>
+                            </div>
+                            <div class="availability">
+                                <h4>Mövcud vaxtlar</h4>
+                                <div class="time-slots">
+                                    <span class="time-slot available">08:30</span>
+                                    <span class="time-slot available">10:00</span>
+                                    <span class="time-slot available">12:30</span>
+                                    <span class="time-slot available">16:00</span>
+                                </div>
+                                <button class="btn-primary book-appointment">
+                                    <i class="fas fa-calendar-plus"></i>
+                                    Randevu Al
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Doctor Card 4 -->
+                        <div class="doctor-card" data-specialty="pediatr" data-location="narimanov" data-rating="5" data-price="75">
+                            <div class="doctor-image">
+                                <img src="https://via.placeholder.com/120x120/ef4444/ffffff?text=NH" alt="Dr. Nigar Həsənova">
+                                <div class="online-status online"></div>
+                            </div>
+                            <div class="doctor-info">
+                                <h3>Dr. Nigar Həsənova</h3>
+                                <p class="specialty">Pediatr</p>
+                                <div class="rating">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="rating-text">4.9 (156 rəy)</span>
+                                </div>
+                                <div class="location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Nərimanov rayonu
+                                </div>
+                                <div class="experience">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    18 il təcrübə
+                                </div>
+                                <div class="price">
+                                    <span class="amount">₼75</span>
+                                    <span class="period">konsultasiya</span>
+                                </div>
+                            </div>
+                            <div class="availability">
+                                <h4>Mövcud vaxtlar</h4>
+                                <div class="time-slots">
+                                    <span class="time-slot available">09:00</span>
+                                    <span class="time-slot available">11:00</span>
+                                    <span class="time-slot unavailable">14:00</span>
+                                    <span class="time-slot available">16:30</span>
+                                </div>
+                                <button class="btn-primary book-appointment">
+                                    <i class="fas fa-calendar-plus"></i>
+                                    Randevu Al
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Doctor Card 5 -->
+                        <div class="doctor-card" data-specialty="ortoped" data-location="sabail" data-rating="4" data-price="85">
+                            <div class="doctor-image">
+                                <img src="https://via.placeholder.com/120x120/6b7280/ffffff?text=RA" alt="Dr. Rəşad Əliyev">
+                                <div class="online-status offline"></div>
+                            </div>
+                            <div class="doctor-info">
+                                <h3>Dr. Rəşad Əliyev</h3>
+                                <p class="specialty">Ortoped</p>
+                                <div class="rating">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <span class="rating-text">4.7 (93 rəy)</span>
+                                </div>
+                                <div class="location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Səbail rayonu
+                                </div>
+                                <div class="experience">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    20 il təcrübə
+                                </div>
+                                <div class="price">
+                                    <span class="amount">₼85</span>
+                                    <span class="period">konsultasiya</span>
+                                </div>
+                            </div>
+                            <div class="availability">
+                                <h4>Mövcud vaxtlar</h4>
+                                <div class="time-slots">
+                                    <span class="time-slot unavailable">10:00</span>
+                                    <span class="time-slot unavailable">12:00</span>
+                                    <span class="time-slot available">15:00</span>
+                                    <span class="time-slot available">17:30</span>
+                                </div>
+                                <button class="btn-primary book-appointment">
+                                    <i class="fas fa-calendar-plus"></i>
+                                    Randevu Al
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Doctor Card 6 -->
+                        <div class="doctor-card" data-specialty="ginekoloq" data-location="baki-merkez" data-rating="5" data-price="90">
+                            <div class="doctor-image">
+                                <img src="https://via.placeholder.com/120x120/10b981/ffffff?text=GQ" alt="Dr. Günel Qasımova">
+                                <div class="online-status online"></div>
+                            </div>
+                            <div class="doctor-info">
+                                <h3>Dr. Günel Qasımova</h3>
+                                <p class="specialty">Ginekoloq</p>
+                                <div class="rating">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="rating-text">5.0 (78 rəy)</span>
+                                </div>
+                                <div class="location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Bakı Mərkəz
+                                </div>
+                                <div class="experience">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    14 il təcrübə
+                                </div>
+                                <div class="price">
+                                    <span class="amount">₼90</span>
+                                    <span class="period">konsultasiya</span>
+                                </div>
+                            </div>
+                            <div class="availability">
+                                <h4>Mövcud vaxtlar</h4>
+                                <div class="time-slots">
+                                    <span class="time-slot available">09:30</span>
+                                    <span class="time-slot available">11:30</span>
+                                    <span class="time-slot available">14:30</span>
+                                    <span class="time-slot unavailable">16:00</span>
+                                </div>
+                                <button class="btn-primary book-appointment">
+                                    <i class="fas fa-calendar-plus"></i>
+                                    Randevu Al
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="load-more">
+                        <button class="btn-outline load-more-btn">
+                            <i class="fas fa-plus"></i>
+                            Daha çox həkim göstər
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mobile Filter Toggle -->
+    <button class="mobile-filter-toggle">
+        <i class="fas fa-filter"></i>
+        Filterlər
+    </button>
+
+    <script src="doctor-search.js"></script>
+</body>
+</html>

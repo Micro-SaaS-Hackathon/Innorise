@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randevu Al - Smart Clinic</title>
+    <link rel="stylesheet" href="booking.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <span>Smart Clinic</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Ana Səhifə</a>
+                <a href="doctor-search.html" class="nav-link">Həkim Axtarışı</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            </nav>
+            <div class="header-actions">
+                <button class="btn-outline">Giriş</button>
+                <button class="btn-primary">Qeydiyyat</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a href="index.html">Ana Səhifə</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="doctor-search.html">Həkim Axtarışı</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Randevu Al</span>
+                </div>
+                <h1>Randevu Al</h1>
+                <p>Həkiminizlə randevu almaq üçün aşağıdakı formu doldurun</p>
+            </div>
+
+            <!-- Booking Layout -->
+            <div class="booking-layout">
+                <!-- Left Column - Booking Form -->
+                <div class="booking-form-section">
+                    <form class="booking-form" id="bookingForm">
+                        <!-- Doctor Selection -->
+                        <div class="form-section">
+                            <h2>
+                                <i class="fas fa-user-md"></i>
+                                Həkim Seçimi
+                            </h2>
+                            <div class="doctor-selection">
+                                <div class="selected-doctor" id="selectedDoctor">
+                                    <div class="doctor-avatar">
+                                        <img src="https://via.placeholder.com/60x60/2563eb/ffffff?text=AM" alt="Dr. Ayşə Məmmədova">
+                                    </div>
+                                    <div class="doctor-info">
+                                        <h3>Dr. Ayşə Məmmədova</h3>
+                                        <p>Kardioloq</p>
+                                        <div class="doctor-rating">
+                                            <div class="stars">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span>5.0 (124 rəy)</span>
+                                        </div>
+                                    </div>
+                                    <div class="doctor-price">
+                                        <span class="price">₼80</span>
+                                        <span class="price-label">konsultasiya</span>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn-outline change-doctor">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    Həkimi Dəyiş
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Date Selection -->
+                        <div class="form-section">
+                            <h2>
+                                <i class="fas fa-calendar-alt"></i>
+                                Tarix Seçin
+                            </h2>
+                            <div class="date-selection">
+                                <div class="calendar-header">
+                                    <button type="button" class="calendar-nav" id="prevMonth">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <h3 id="currentMonth">Yanvar 2024</h3>
+                                    <button type="button" class="calendar-nav" id="nextMonth">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                                <div class="calendar-grid" id="calendarGrid">
+                                    <!-- Calendar days will be generated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Time Selection -->
+                        <div class="form-section">
+                            <h2>
+                                <i class="fas fa-clock"></i>
+                                Vaxt Seçin
+                            </h2>
+                            <div class="time-selection">
+                                <div class="time-slots" id="timeSlots">
+                                    <!-- Time slots will be generated by JavaScript -->
+                                </div>
+                                <div class="no-slots-message" id="noSlotsMessage" style="display: none;">
+                                    <i class="fas fa-info-circle"></i>
+                                    <p>Seçilmiş tarix üçün mövcud vaxt yoxdur. Zəhmət olmasa başqa tarix seçin.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Patient Information -->
+                        <div class="form-section">
+                            <h2>
+                                <i class="fas fa-user"></i>
+                                Xəstə Məlumatları
+                            </h2>
+                            <div class="patient-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="patientName">Ad və Soyad *</label>
+                                        <input type="text" id="patientName" name="patientName" required placeholder="Adınızı və soyadınızı daxil edin">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="patientPhone">Telefon *</label>
+                                        <input type="tel" id="patientPhone" name="patientPhone" required placeholder="+994 XX XXX XX XX">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="patientEmail">Email</label>
+                                        <input type="email" id="patientEmail" name="patientEmail" placeholder="email@example.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="patientAge">Yaş</label>
+                                        <input type="number" id="patientAge" name="patientAge" min="1" max="120" placeholder="Yaşınızı daxil edin">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="patientNotes">Şikayət və ya qeyd</label>
+                                    <textarea id="patientNotes" name="patientNotes" rows="4" placeholder="Şikayətinizi və ya əlavə qeydlərinizi yazın (ixtiyari)"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Section -->
+                        <div class="form-section">
+                            <h2>
+                                <i class="fas fa-credit-card"></i>
+                                Ödəniş Seçimi
+                            </h2>
+                            <div class="payment-section">
+                                <div class="payment-options">
+                                    <div class="payment-option">
+                                        <input type="radio" id="paymentFull" name="paymentType" value="full" checked>
+                                        <label for="paymentFull">
+                                            <div class="payment-info">
+                                                <h4>Tam Ödəniş</h4>
+                                                <p>Randevu zamanı tam məbləği ödəyin</p>
+                                                <span class="payment-amount">₼80</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="payment-option">
+                                        <input type="radio" id="paymentDeposit" name="paymentType" value="deposit">
+                                        <label for="paymentDeposit">
+                                            <div class="payment-info">
+                                                <h4>Depozit Ödənişi</h4>
+                                                <p>İndi depozit ödəyin, qalan məbləği randevu zamanı</p>
+                                                <span class="payment-amount">₼30 <small>(depozit)</small></span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="payment-methods">
+                                    <h4>Ödəniş Metodu</h4>
+                                    <div class="payment-method-options">
+                                        <div class="payment-method">
+                                            <input type="radio" id="cardPayment" name="paymentMethod" value="card" checked>
+                                            <label for="cardPayment">
+                                                <i class="fas fa-credit-card"></i>
+                                                <span>Kart ilə</span>
+                                            </label>
+                                        </div>
+                                        <div class="payment-method">
+                                            <input type="radio" id="cashPayment" name="paymentMethod" value="cash">
+                                            <label for="cashPayment">
+                                                <i class="fas fa-money-bill-wave"></i>
+                                                <span>Nağd</span>
+                                            </label>
+                                        </div>
+                                        <div class="payment-method">
+                                            <input type="radio" id="bankTransfer" name="paymentMethod" value="transfer">
+                                            <label for="bankTransfer">
+                                                <i class="fas fa-university"></i>
+                                                <span>Bank köçürməsi</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary submit-booking" disabled>
+                                <i class="fas fa-calendar-check"></i>
+                                Randevunu Təsdiqlə
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right Column - Booking Summary -->
+                <div class="booking-summary-section">
+                    <div class="booking-summary" id="bookingSummary">
+                        <h3>Randevu Xülasəsi</h3>
+                        
+                        <div class="summary-item">
+                            <div class="summary-label">Həkim</div>
+                            <div class="summary-value" id="summaryDoctor">Dr. Ayşə Məmmədova</div>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <div class="summary-label">İxtisas</div>
+                            <div class="summary-value" id="summarySpecialty">Kardioloq</div>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <div class="summary-label">Tarix</div>
+                            <div class="summary-value" id="summaryDate">Tarix seçin</div>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <div class="summary-label">Vaxt</div>
+                            <div class="summary-value" id="summaryTime">Vaxt seçin</div>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <div class="summary-label">Xəstə</div>
+                            <div class="summary-value" id="summaryPatient">Məlumat daxil edin</div>
+                        </div>
+                        
+                        <div class="summary-divider"></div>
+                        
+                        <div class="summary-item price-summary">
+                            <div class="summary-label">Konsultasiya qiyməti</div>
+                            <div class="summary-value">₼80</div>
+                        </div>
+                        
+                        <div class="summary-item payment-summary">
+                            <div class="summary-label">Ödəniş növü</div>
+                            <div class="summary-value" id="summaryPayment">Tam ödəniş</div>
+                        </div>
+                        
+                        <div class="summary-item total-summary">
+                            <div class="summary-label">Ödəniləcək məbləğ</div>
+                            <div class="summary-value" id="summaryTotal">₼80</div>
+                        </div>
+                        
+                        <div class="summary-note">
+                            <i class="fas fa-info-circle"></i>
+                            <p>Randevu təsdiqlənəndən sonra sizinlə əlaqə saxlanılacaq.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div class="contact-info">
+                        <h4>Əlaqə</h4>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+994 12 555 0123</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@smartclinic.az</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Nizami küç. 203, Bakı</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header success">
+                <i class="fas fa-check-circle"></i>
+                <h3>Randevu Uğurla Yaradıldı!</h3>
+            </div>
+            <div class="modal-content">
+                <p>Randevunuz uğurla qeydə alındı. Tezliklə sizinlə əlaqə saxlanılacaq və randevu təfərrüatları SMS və ya email vasitəsilə göndəriləcək.</p>
+                
+                <div class="booking-details">
+                    <h4>Randevu Təfərrüatları</h4>
+                    <div class="detail-row">
+                        <span>Həkim:</span>
+                        <span id="modalDoctor">Dr. Ayşə Məmmədova</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Tarix:</span>
+                        <span id="modalDate">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Vaxt:</span>
+                        <span id="modalTime">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Ödəniş:</span>
+                        <span id="modalPayment">-</span>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn-primary" onclick="closeSuccessModal()">
+                        <i class="fas fa-check"></i>
+                        Tamam
+                    </button>
+                    <button class="btn-outline" onclick="window.location.href='dashboard.html'">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Dashboard-a get
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="booking.js"></script>
+</body>
+</html>

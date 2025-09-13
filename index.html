@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Clinic - Həkim Randevularını Asanlıqla Alın</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Dynamic CSS will be loaded here -->
+    <style id="dynamic-styles"></style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Smart Clinic</span>
+                </div>
+                <div class="nav-menu">
+                    <a href="#dashboard" class="nav-link" data-page="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Dashboard
+                    </a>
+                    <a href="#doctor-search" class="nav-link" data-page="doctor-search">
+                        <i class="fas fa-search"></i>
+                        Həkim Axtar
+                    </a>
+                    <a href="#doctor-profile" class="nav-link" data-page="doctor-profile">
+                        <i class="fas fa-user-md"></i>
+                        Həkim Profili
+                    </a>
+                    <a href="#booking" class="nav-link" data-page="booking">
+                        <i class="fas fa-calendar-plus"></i>
+                        Rezervasiya
+                    </a>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn-secondary">Giriş</button>
+                    <button class="btn-primary">Qeydiyyat</button>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Loading Indicator -->
+    <div id="loading-indicator" class="loading-indicator" style="display: none;">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <span>Yüklənir...</span>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main id="content" class="main-content">
+        <!-- Default Home Content -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">Smart Clinic-ə Xoş Gəlmisiniz</h1>
+                        <p class="hero-description">
+                            Həkim randevularınızı sadəcə bir neçə kliklə alın. 
+                            Vaxtınızı qənaət edin və sağlamlığınızı prioritet edin.
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="btn-primary btn-large" onclick="loadPage('booking')">
+                                <i class="fas fa-calendar-plus"></i>
+                                Randevu Al
+                            </button>
+                            <button class="btn-outline btn-large" onclick="loadPage('doctor-search')">
+                                <i class="fas fa-search"></i>
+                                Həkim Axtar
+                            </button>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-number">10K+</span>
+                                <span class="stat-label">Məmnun Xəstə</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Həkim</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">Dəstək</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="app-mockup">
+                            <div class="phone-frame">
+                                <div class="phone-screen">
+                                    <div class="app-header">
+                                        <div class="status-bar">
+                                            <span>9:41</span>
+                                            <div class="battery">
+                                                <i class="fas fa-battery-full"></i>
+                                            </div>
+                                        </div>
+                                        <div class="app-nav">
+                                            <h3>Smart Clinic</h3>
+                                            <i class="fas fa-bell"></i>
+                                        </div>
+                                    </div>
+                                    <div class="app-content">
+                                        <div class="search-bar">
+                                            <i class="fas fa-search"></i>
+                                            <span>Həkim və ya ixtisas axtarın...</span>
+                                        </div>
+                                        <div class="quick-actions">
+                                            <div class="action-card" onclick="loadPage('booking')">
+                                                <i class="fas fa-calendar"></i>
+                                                <span>Randevu</span>
+                                            </div>
+                                            <div class="action-card" onclick="loadPage('doctor-search')">
+                                                <i class="fas fa-user-md"></i>
+                                                <span>Həkimlər</span>
+                                            </div>
+                                            <div class="action-card">
+                                                <i class="fas fa-pills"></i>
+                                                <span>Dərmanlar</span>
+                                            </div>
+                                            <div class="action-card" onclick="loadPage('dashboard')">
+                                                <i class="fas fa-file-medical"></i>
+                                                <span>Nəticələr</span>
+                                            </div>
+                                        </div>
+                                        <div class="upcoming-appointments">
+                                            <h4>Gələcək Randevular</h4>
+                                            <div class="appointment-card" onclick="loadPage('doctor-profile')">
+                                                <div class="appointment-info">
+                                                    <span class="doctor-name">Dr. Ayşə Məmmədova</span>
+                                                    <span class="appointment-time">Sabah, 14:30</span>
+                                                </div>
+                                                <div class="appointment-type">Kardioloq</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Access Section -->
+        <section class="quick-access">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Tez Keçid</h2>
+                    <p>Ən çox istifadə olunan xidmətlər</p>
+                </div>
+                <div class="quick-access-grid">
+                    <div class="quick-card" onclick="loadPage('dashboard')">
+                        <div class="quick-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3>Dashboard</h3>
+                        <p>Randevularınızı və tibbi məlumatlarınızı idarə edin</p>
+                    </div>
+                    <div class="quick-card" onclick="loadPage('doctor-search')">
+                        <div class="quick-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Həkim Axtar</h3>
+                        <p>İxtisas və ya ad əsasında həkim axtarın</p>
+                    </div>
+                    <div class="quick-card" onclick="loadPage('doctor-profile')">
+                        <div class="quick-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3>Həkim Profili</h3>
+                        <p>Həkim haqqında ətraflı məlumat əldə edin</p>
+                    </div>
+                    <div class="quick-card" onclick="loadPage('booking')">
+                        <div class="quick-icon">
+                            <i class="fas fa-calendar-plus"></i>
+                        </div>
+                        <h3>Rezervasiya</h3>
+                        <p>Yeni randevu alın və ya mövcudları idarə edin</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Error Modal -->
+    <div id="error-modal" class="modal-overlay" style="display: none;">
+        <div class="modal">
+            <div class="modal-header error">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Xəta Baş Verdi</h3>
+            </div>
+            <div class="modal-content">
+                <p id="error-message">Səhifə yüklənərkən xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.</p>
+                <div class="modal-actions">
+                    <button class="btn-primary" onclick="closeErrorModal()">
+                        <i class="fas fa-check"></i>
+                        Tamam
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>Smart Clinic</span>
+                    </div>
+                    <p>Müasir texnologiya ilə sağlamlıq xidmətlərini daha əlçatan edirik.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Xidmətlər</h4>
+                    <ul>
+                        <li><a href="#" onclick="loadPage('booking')">Randevu Alma</a></li>
+                        <li><a href="#" onclick="loadPage('doctor-search')">Həkim Axtarışı</a></li>
+                        <li><a href="#" onclick="loadPage('dashboard')">Tibbi Nəticələr</a></li>
+                        <li><a href="#">Dərman Sifarişi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Şirkət</h4>
+                    <ul>
+                        <li><a href="#">Haqqımızda</a></li>
+                        <li><a href="#">Karyera</a></li>
+                        <li><a href="#">Xəbərlər</a></li>
+                        <li><a href="#">Əlaqə</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Dəstək</h4>
+                    <ul>
+                        <li><a href="#">Yardım Mərkəzi</a></li>
+                        <li><a href="#">Sual-Cavab</a></li>
+                        <li><a href="#">Gizlilik Siyasəti</a></li>
+                        <li><a href="#">İstifadə Şərtləri</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Smart Clinic. Bütün hüquqlar qorunur.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="spa-router.js"></script>
+</body>
+</html>
